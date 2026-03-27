@@ -56,8 +56,15 @@ validate_install() {
 finish() {
   info "Okira22 installed successfully"
   echo
-  echo "Next commands:"
+  echo "Quick start:"
+  echo "  okira22"
+  echo "  okira22 help"
   echo "  okira22 status"
+  echo "  okira22 scan"
+  echo "  okira22 summary"
+  echo "  okira22 report"
+  echo
+  echo "Launch and validation:"
   echo "  okira22 controlled-launch-truth"
   echo "  okira22 pre-launch-smoke"
 }
