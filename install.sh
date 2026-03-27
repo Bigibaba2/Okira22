@@ -4,8 +4,7 @@ set -euo pipefail
 REPO_OWNER="Bigibaba2"
 REPO_NAME="Okira22"
 PKG_VERSION="1.0.0-controlled-launch"
-PKG_ARCH="amd64"
-PKG_NAME="okira22_${PKG_VERSION}_${PKG_ARCH}.deb"
+PKG_NAME="okira22_${PKG_VERSION}_all.deb"
 DOWNLOAD_URL="https://github.com/${REPO_OWNER}/${REPO_NAME}/releases/download/v${PKG_VERSION}/${PKG_NAME}"
 TMP_DEB="/tmp/${PKG_NAME}"
 
@@ -30,12 +29,6 @@ require_tools() {
   command -v curl >/dev/null 2>&1 || fail "curl is required"
   command -v apt >/dev/null 2>&1 || fail "apt is required"
   command -v dpkg >/dev/null 2>&1 || fail "dpkg is required"
-}
-
-require_arch() {
-  local arch
-  arch="$(dpkg --print-architecture 2>/dev/null || true)"
-  [ "$arch" = "$PKG_ARCH" ] || fail "This installer currently supports ${PKG_ARCH} only (found: ${arch:-unknown})"
 }
 
 download_package() {
@@ -73,7 +66,6 @@ main() {
   require_linux
   require_root
   require_tools
-  require_arch
   download_package
   install_package
   validate_install
