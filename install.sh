@@ -4,7 +4,7 @@ set -euo pipefail
 REPO_OWNER="Bigibaba2"
 REPO_NAME="Okira22"
 RELEASE_TAG="v1.0.0-controlled-launch"
-PKG_VERSION="1.0.1-9"
+PKG_VERSION="1.0.1-10"
 PKG_NAME="okira22_${PKG_VERSION}_all.deb"
 DOWNLOAD_URL="https://github.com/${REPO_OWNER}/${REPO_NAME}/releases/download/${RELEASE_TAG}/${PKG_NAME}"
 TMP_DEB="/tmp/${PKG_NAME}"
