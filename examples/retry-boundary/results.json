@@ -1,0 +1,110 @@
+{
+  "example": "Okira22 public retry-boundary demonstration",
+  "synthetic_only": true,
+  "network_requests": 0,
+  "customer_system_tested": false,
+  "process_restart_tested": false,
+  "database_reopen_tested": true,
+  "cases": [
+    {
+      "case": "normal",
+      "client_states": [
+        "NEW_BOOKING_CONFIRMED"
+      ],
+      "service_calls": 1,
+      "observed_booking_rows": 1,
+      "effects_after_first_attempt": null,
+      "workflow_result": "EXPECTED_BEHAVIOR"
+    },
+    {
+      "case": "unsafe_retry",
+      "client_states": [
+        "OUTCOME_UNKNOWN",
+        "NEW_BOOKING_CONFIRMED"
+      ],
+      "service_calls": 2,
+      "observed_booking_rows": 2,
+      "effects_after_first_attempt": 1,
+      "workflow_result": "FAIL_DUPLICATE_EFFECT"
+    },
+    {
+      "case": "guarded_retry",
+      "client_states": [
+        "OUTCOME_UNKNOWN",
+        "EXISTING_BOOKING_CONFIRMED"
+      ],
+      "service_calls": 2,
+      "observed_booking_rows": 1,
+      "effects_after_first_attempt": 1,
+      "workflow_result": "EXPECTED_BEHAVIOR"
+    },
+    {
+      "case": "unknown_without_retry",
+      "client_states": [
+        "OUTCOME_UNKNOWN"
+      ],
+      "service_calls": 1,
+      "observed_booking_rows": 1,
+      "effects_after_first_attempt": null,
+      "workflow_result": "OUTCOME_UNKNOWN"
+    },
+    {
+      "case": "changed_payload",
+      "client_states": [
+        "APPROVAL_DENIED"
+      ],
+      "service_calls": 0,
+      "observed_booking_rows": 0,
+      "effects_after_first_attempt": null,
+      "workflow_result": "DENIED_BEFORE_SERVICE"
+    },
+    {
+      "case": "expired_approval",
+      "client_states": [
+        "APPROVAL_DENIED"
+      ],
+      "service_calls": 0,
+      "observed_booking_rows": 0,
+      "effects_after_first_attempt": null,
+      "workflow_result": "DENIED_BEFORE_SERVICE"
+    },
+    {
+      "case": "revoked_approval",
+      "client_states": [
+        "APPROVAL_DENIED"
+      ],
+      "service_calls": 0,
+      "observed_booking_rows": 0,
+      "effects_after_first_attempt": null,
+      "workflow_result": "DENIED_BEFORE_SERVICE"
+    },
+    {
+      "case": "key_payload_conflict",
+      "client_states": [
+        "NEW_BOOKING_CONFIRMED",
+        "IDEMPOTENCY_KEY_CONFLICT"
+      ],
+      "service_calls": 2,
+      "observed_booking_rows": 1,
+      "effects_after_first_attempt": null,
+      "workflow_result": "CONFLICT_REJECTED"
+    },
+    {
+      "case": "database_reopen",
+      "client_states": [
+        "OUTCOME_UNKNOWN",
+        "EXISTING_BOOKING_CONFIRMED"
+      ],
+      "service_calls": 2,
+      "observed_booking_rows": 1,
+      "effects_after_first_attempt": 1,
+      "workflow_result": "EXPECTED_BEHAVIOR"
+    }
+  ],
+  "limits": [
+    "Local fake service and receipt use one SQLite transaction.",
+    "No remote API, crash/power-loss, concurrency or load testing.",
+    "Approval is fixture data, not cryptographic authentication.",
+    "No guarantee of exactly-once external effects."
+  ]
+}

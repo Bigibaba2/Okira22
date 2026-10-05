@@ -39,6 +39,6 @@ Client names, logos, testimonials and case studies are not used as proof without
 
 This documentation does not certify autonomous live hunting, production deployment readiness, third-party security audits, regulatory compliance, customer outcomes or continuous monitoring. It contains no claim that a particular customer has a vulnerability.
 
-The private development runtime is not published here. This documentation update adds no executable demonstration or CI result, and makes no public test-pass claim. Future examples should include their own source, reproduction instructions, execution context and limitations rather than unsupported badges.
+The private development runtime is not published here. A separate [public retry-boundary example](../examples/retry-boundary/README.md) now provides executable synthetic source, a recorded local result and reproduction instructions. Its 12 assertion tests are about a deliberately small local fixture, not a customer environment or the private engine. No GitHub CI pass, external audit or production guarantee is claimed. The illustrative customer-report entry above remains an unexecuted template.
 
 [Read the pilot scope](PILOT.md) · [Back to the project](../README.md)
