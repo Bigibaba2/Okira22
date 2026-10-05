@@ -16,6 +16,12 @@ You receive a boundary map, reproducible tests, a concise evidence report, and p
 
 [Read the pilot scope](docs/PILOT.md) · [See our evidence approach and report example](docs/TRUST_AND_EVIDENCE.md)
 
+## Run a small public example
+
+What happens when a booking is committed but the acknowledgement is lost? Our [retry-boundary example](examples/retry-boundary/README.md) includes source, reproduction commands and recorded synthetic results. The deliberately unsafe retry produces two local booking rows; the guarded variant preserves one. Unknown outcomes remain unknown until evidence is available.
+
+The example has **12 passing assertion tests across nine synthetic scenarios**, executed locally—not a GitHub CI result, customer audit or production benchmark. No credentials, network connection or installer are needed. The private runtime is not included.
+
 ## Project status
 
 | Area | What this repository represents |
