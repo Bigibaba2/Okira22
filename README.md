@@ -32,9 +32,11 @@ An internal test result is not a customer audit. A simulated example is not a pr
 
 A pilot is not a security certification, a full application penetration test, a guarantee of finding vulnerabilities, a guaranteed bounty, or continuous monitoring. Remediation, production changes and additional workflows require a separate agreement.
 
-## About the existing installer
+## Historical installer
 
-`install.sh` refers to an earlier controlled-launch package. It is not the onboarding path for this pilot. Package availability, compatibility and integrity have not been revalidated as part of this documentation update; this README does not recommend running it on production systems.
+The earlier controlled-launch installer is **retired from the current onboarding path**. The root `install.sh` now prints a notice and exits without downloading or installing anything. The original script is preserved as archival text; historical release assets and existing installations are unchanged. See the [legacy release inventory and limitations](docs/LEGACY_RELEASES.md).
+
+**No installer is needed for the $222 pilot. Start with an agreed workflow and scope.**
 
 ## Contact
 
